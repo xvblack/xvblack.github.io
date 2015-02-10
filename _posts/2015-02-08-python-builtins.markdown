@@ -33,4 +33,16 @@ Python的builtins有很多有趣的东西。
 
 	这时任何对x的读取，赋值以及删除操作都会调用对应的函数，而不是直接生成一个名为x的attribute。而实际上，对于new-style classes的实例的任何一个形如obj.attr的调用，其本身都会有一个通过`__getattribute__`进行的查找（一些[特殊方法](https://docs.python.org/2/reference/datamodel.html#new-style-special-lookup)除外），这些之后再写。
 
-（待续）
+3. reversed
+
+	
+	`reversed`是一个用于生成逆向遍历的iterator的函数。一个很自然的问题就是我们是无法对一个仅提供了正向遍历的iterator进行逆向迭代的，除非这个迭代器满足特定的性质。而实际上`reversed`函数并不能将任意iterator转化为逆向的，其本身也不调用`__iter__`。`reversed`的实现通过两种协议：
+	1. `__reversed__`
+	2. `__len__` 和 `__getitem__`
+	
+	第一种直接获取`__iter__`相似的迭代器，而第二种则通过随机访问实现。第一种的优先级高于第二种。
+	
+4. super
+
+	`super`是python中调用父类方法的builtin函数，并且仅仅对new style class有效。
+	（待续）

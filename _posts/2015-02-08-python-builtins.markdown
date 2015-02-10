@@ -37,6 +37,7 @@ Python的builtins有很多有趣的东西。
 
 	
 	`reversed`是一个用于生成逆向遍历的iterator的函数。一个很自然的问题就是我们是无法对一个仅提供了正向遍历的iterator进行逆向迭代的，除非这个迭代器满足特定的性质。而实际上`reversed`函数并不能将任意iterator转化为逆向的，其本身也不调用`__iter__`。`reversed`的实现通过两种协议：
+	
 	1. `__reversed__`
 	2. `__len__` 和 `__getitem__`
 	
